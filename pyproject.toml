@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "cryptex"
+version = "0.1.0"
+description = "Lightweight ASE implementation"
+authors = ["K. LeBryce <k.lebryce@pm.me>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+cryptography = "^42.0.7"
+
+[tool.poetry.group.dev.dependencies]
+poetry = "^1.8.3"
+black = "^24.4.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
