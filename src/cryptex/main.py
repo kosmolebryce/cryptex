@@ -9,25 +9,19 @@ import base64
 # Constants and environment setup
 HOME = Path.home()
 APPS_DIR = os.getenv("APPS_DIR")
-APPS_DATA_DIR = os.getenv("APPS_DATA_DIR")
-CRYPTEX_DIR = os.getenv("CRYPTEX_DIR")
-CRYPTEX_DATA_DIR = os.getenv("CRYPTEX_DATA_DIR")
-CRYPTEX_ARCHIVE_DIR = os.getenv("CRYPTEX_ARCHIVE_DIR")
-CRYPTEX_ORIGINS_DIR = os.getenv("CRYPTEX_ORIGINS_DIR")
-PWD = os.getenv("PWD")
+APPLICATION_SUPPORT_DIR = Path("~/Library/Application Support").expanduser()
+CRYPTEX_DIR = Path(".").parent.parent
+CRYPTEX_DATA_DIR = APPLICATION_SUPPORT_DIR / "Cryptex"
+CRYPTEX_ARCHIVE_DIR = CRYPTEX_DATA_DIR / "En"
+CRYPTEX_ORIGINS_DIR = CRYPTEX_DATA_DIR / "De"
+
 
 # Ensure necessary directories exist
-if not Path(APPS_DATA_DIR).exists():
-    print("Could not locate `~/app_data`.")
-    print("Creating it now...")
-    app_data_directory = HOME / "app_data"
-    Path.mkdir(app_data_directory, parents=True, exist_ok=True)
 
 if not Path(CRYPTEX_DATA_DIR).exists():
-    print("Could not locate `cryptex` data directory.")
+    print("Could not locate `Cryptex` data directory.")
     print("Creating it now...")
-    app_data_directory = HOME / "app_data"
-    cryptex_data_directory = app_data_directory / "cryptex"
+    cryptex_data_directory = APPLICATION_SUPPORT_DIR / "cryptex"
     archive_directory = cryptex_data_directory / "archive"
     origins_directory = cryptex_data_directory / "origins"
     Path.mkdir(cryptex_data_directory, parents=True, exist_ok=True)
